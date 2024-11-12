@@ -34,7 +34,7 @@ public class FreeAccount extends Account {
 	}
 
 	@Override
-	public void withdrawMoney() {
+	public void withdrawalMoney() {
 		while (true) {
 			try {
 				System.out.print("\t출금 하실 금액은? ");

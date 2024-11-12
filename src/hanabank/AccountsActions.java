@@ -3,7 +3,7 @@ package hanabank;
 import java.util.Map;
 
 public interface AccountsActions {
-	public void withdrawMoney();
+	public void withdrawalMoney();
 
 	public void plusAction();
 
@@ -11,7 +11,7 @@ public interface AccountsActions {
 
 	public boolean transferMoney(Map<Integer, Account> accountList, int money);
 
-	public void accountInfo();
+	public void getAccountInfo();
 
 	public String simpleInfo();
 }

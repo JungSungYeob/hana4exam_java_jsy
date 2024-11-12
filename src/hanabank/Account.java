@@ -12,7 +12,7 @@ public abstract class Account implements AccountsActions {
 	protected String name;
 
 	protected Account selectAccount(Map<Integer, Account> accountList) {
-		System.out.printf("\t어디로 보낼까요? %s ", Bank.showAllSimpleInfo(this, accountList));
+		System.out.printf("\t어디로 보낼까요? %s ", Tool.showAllSimpleInfo(this, accountList));
 		String accountSelected = Tool.scanNext();
 		Account account = accountList.get(Integer.parseInt(accountSelected));
 		if (this.accountNumber == Integer.parseInt(accountSelected) || account == null) {
@@ -40,7 +40,7 @@ public abstract class Account implements AccountsActions {
 	}
 
 	@Override
-	public void accountInfo() {
+	public void getAccountInfo() {
 		Tool.printGreen("\t%s 통장(계좌번호: %d, 잔액: %s, 예금주: %s)".formatted(this.name, this.accountNumber,
 			Tool.decimalFormat(this.balance), this.owner));
 	}

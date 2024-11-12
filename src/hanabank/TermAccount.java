@@ -5,7 +5,7 @@ import java.util.TreeMap;
 
 import hanabank.exceptions.InvalidInputException;
 import hanabank.exceptions.TransferException;
-import hanabank.exceptions.WithdrawException;
+import hanabank.exceptions.WithdrawalException;
 
 public class TermAccount extends Account {
 
@@ -48,8 +48,8 @@ public class TermAccount extends Account {
 	}
 
 	@Override
-	public void withdrawMoney() {
-		throw new WithdrawException("\t출금할 수 없는 통장입니다.");
+	public void withdrawalMoney() {
+		throw new WithdrawalException("\t출금할 수 없는 통장입니다.");
 	}
 
 	public void rateInfo() {

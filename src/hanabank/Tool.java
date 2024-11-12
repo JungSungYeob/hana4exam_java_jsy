@@ -1,7 +1,9 @@
 package hanabank;
 
 import java.text.DecimalFormat;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.StringJoiner;
 
 import hanabank.exceptions.ExitException;
 import hanabank.exceptions.NotEnoughMoneyException;
@@ -12,6 +14,19 @@ public class Tool {
 	public static final String RESET = "\u001B[0m";
 	public static final String GREEN = "\u001B[32m";
 	public static final String RED = "\u001B[31m";
+
+	public static String showAllSimpleInfo(Account account, Map<Integer, Account> accountList) {
+		StringJoiner joiner = new StringJoiner(", ");
+		for (Map.Entry<Integer, Account> entry : accountList.entrySet()) {
+			if (account != null) {
+				if (account.accountNumber == entry.getKey()) {
+					continue;
+				}
+			}
+			joiner.add(entry.getValue().simpleInfo());
+		}
+		return "(%s)".formatted(joiner.toString());
+	}
 
 	public static String scanNext() {
 		String input = scanner.nextLine();

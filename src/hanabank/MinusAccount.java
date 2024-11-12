@@ -6,7 +6,7 @@ public class MinusAccount extends Account {
 	}
 
 	@Override
-	public void withdrawMoney() {
+	public void withdrawalMoney() {
 		System.out.print("\t출금 하실 금액은? ");
 		String money = Tool.scanNext();
 		super.balance -= Integer.parseInt(money);
@@ -15,7 +15,7 @@ public class MinusAccount extends Account {
 	}
 
 	@Override
-	public void accountInfo() {
+	public void getAccountInfo() {
 		Tool.printGreen("\t%s 통장 - 잔액: %s".formatted(super.name, Tool.decimalFormat(super.balance)));
 	}
 }
