@@ -7,6 +7,7 @@ import hanabank.exceptions.ExitException;
 import hanabank.exceptions.NotEnoughMoneyException;
 
 public class Tool {
+	//단일 스레드 환경이므로 static으로 처리
 	private static final Scanner scanner = new Scanner(System.in);
 	public static final String RESET = "\u001B[0m";
 	public static final String GREEN = "\u001B[32m";

@@ -6,7 +6,7 @@ import java.util.Scanner;
 import java.util.StringJoiner;
 
 import hanabank.exceptions.ExitException;
-import hanabank.exceptions.InvalidInput;
+import hanabank.exceptions.InvalidInputException;
 import hanabank.exceptions.TermCompleteException;
 
 public class Bank {
@@ -82,7 +82,7 @@ public class Bank {
 							break;
 						}
 						default: {
-							throw new InvalidInput();
+							throw new InvalidInputException();
 						}
 					}
 				} catch (ExitException e) {
@@ -111,12 +111,12 @@ public class Bank {
 				String action = Tool.scanNext();
 				Account account = this.accountList.get(Integer.parseInt(action));
 				if (account == null) {
-					throw new InvalidInput("\t유효하지 않은 계좌 번호입니다.");
+					throw new InvalidInputException("\t유효하지 않은 계좌 번호입니다.");
 				}
 				account.accountInfo();
 				menu(account);
 
-			} catch (NumberFormatException | InvalidInput | ExitException e) {
+			} catch (NumberFormatException | InvalidInputException | ExitException e) {
 				if (e instanceof NumberFormatException) {
 					Tool.printDanger("\t계좌 번호는 숫자로만 이루어져있습니다. 정확한 입력을 해주십시오.");
 				} else if (e instanceof ExitException) {

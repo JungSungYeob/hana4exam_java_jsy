@@ -2,8 +2,7 @@ package hanabank;
 
 import java.util.Map;
 
-import hanabank.exceptions.InvalidInput;
-import hanabank.exceptions.WithdrawException;
+import hanabank.exceptions.InvalidInputException;
 
 public abstract class Account implements AccountsActions {
 
@@ -17,7 +16,7 @@ public abstract class Account implements AccountsActions {
 		String accountSelected = Tool.scanNext();
 		Account account = accountList.get(Integer.parseInt(accountSelected));
 		if (this.accountNumber == Integer.parseInt(accountSelected) || account == null) {
-			throw new InvalidInput();
+			throw new InvalidInputException();
 		}
 		return account;
 	}
@@ -61,11 +60,6 @@ public abstract class Account implements AccountsActions {
 		transferAction(account, money);
 		Tool.printGreen("\t%s 통장은 해지되었습니다. 감사합니다.".formatted(this.name));
 		return true;
-	}
-
-	@Override
-	public void withdrawMoney() {
-		throw new WithdrawException("\t출금할 수 없는 통장입니다.");
 	}
 
 	@Override

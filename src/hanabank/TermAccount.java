@@ -3,8 +3,9 @@ package hanabank;
 import java.util.Map;
 import java.util.TreeMap;
 
-import hanabank.exceptions.InvalidInput;
+import hanabank.exceptions.InvalidInputException;
 import hanabank.exceptions.TransferException;
+import hanabank.exceptions.WithdrawException;
 
 public class TermAccount extends Account {
 
@@ -36,7 +37,7 @@ public class TermAccount extends Account {
 			} else if (check.equalsIgnoreCase("N")) {
 				continue;
 			} else {
-				throw new InvalidInput();
+				throw new InvalidInputException();
 			}
 		}
 	}
@@ -44,6 +45,11 @@ public class TermAccount extends Account {
 	@Override
 	public void transferMoney(Map<Integer, Account> accountList) {
 		throw new TransferException("\t이체할 수 없는 통장입니다.");
+	}
+
+	@Override
+	public void withdrawMoney() {
+		throw new WithdrawException("\t출금할 수 없는 통장입니다.");
 	}
 
 	public void rateInfo() {
