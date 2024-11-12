@@ -28,10 +28,6 @@ public class FreeAccount extends Account {
 				Tool.printGreen("\t%s 통장의 잔액은 %s원입니다.".formatted(super.name, Tool.decimalFormat(super.balance)));
 				break;
 			} catch (NotEnoughMoneyException | InvalidInputException | NumberFormatException e) {
-				if (e instanceof NotEnoughMoneyException) {
-					System.out.println("hello");
-					continue;
-				}
 				if (e instanceof NumberFormatException) {
 					Tool.printDanger("\t계좌 번호는 숫자로만 이루어져있습니다. 정확한 입력을 해주십시오.");
 				} else {
