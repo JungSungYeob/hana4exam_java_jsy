@@ -26,18 +26,22 @@ public class TermAccount extends Account {
 
 	public boolean plusAction(Map<Integer, Account> accountList) {
 		while (true) {
-			System.out.print("\t예치 개월 수를 입력하세요(1 ~ 60개월) ");
-			String month = Tool.scanNext();
-			Map.Entry<Integer, Double> entry = rates.floorEntry(Integer.parseInt(month));
-			System.out.printf("\t%s개월(적용금리 %.2f%%)로 만기 처리하시겠어요? (y/n) ", month, entry.getValue());
-			String check = Tool.scanNext();
-			if (check.equalsIgnoreCase("Y")) {
-				int total = (int)(super.balance * (100 + entry.getValue()) / 100);
-				return super.transferMoney(accountList, total);
-			} else if (check.equalsIgnoreCase("N")) {
-				continue;
-			} else {
-				throw new InvalidInputException();
+			try {
+				System.out.print("\t예치 개월 수를 입력하세요(1 ~ 60개월) ");
+				String month = Tool.scanNext();
+				Map.Entry<Integer, Double> entry = rates.floorEntry(Integer.parseInt(month));
+				System.out.printf("\t%s개월(적용금리 %.2f%%)로 만기 처리하시겠어요? (y/n) ", month, entry.getValue());
+				String check = Tool.scanNext();
+				if (check.equalsIgnoreCase("Y")) {
+					int total = (int)(super.balance * (100 + entry.getValue()) / 100);
+					return super.transferMoney(accountList, total);
+				} else if (check.equalsIgnoreCase("N")) {
+					continue;
+				} else {
+					throw new InvalidInputException();
+				}
+			} catch (InvalidInputException | NumberFormatException e) {
+				Tool.printDanger("\t유효하지 않은 입력입니다. 만기 처리 처음으로 돌아갑니다.");
 			}
 		}
 	}
